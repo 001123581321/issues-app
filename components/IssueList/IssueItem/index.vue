@@ -1,11 +1,44 @@
 <template>
   <div :class="$style.issueItem">
-    <div :class="[$style.stateIndicator, $style.cell1]">
-      {{issue.state}}
+    <div :class="$style.cell1">
+      <FontAwesomeSvg
+        :class="[
+          $style.stateIndicatorSvg,
+          $style[`stateIndicatorSvg_${issue.state}`],
+        ]"
+        :svg="faExclamationCircle"
+      />
+      <!--{{issue.state}}-->
     </div>
     <div :class="$style.cell2">
-      <div :class="['h4', $style.cell2__cell1]">
-        {{issue.title}}
+      <div :class="$style.cell2__cell1">
+        <router-link
+          :class="['h4', 'link_expressionless', $style.issueTitle]"
+          :to="{
+            name: 'issues-id',
+            params: {
+              id: issue.number,
+              issue
+            }
+          }"
+        >
+          {{issue.title}}
+        </router-link>
+
+        <template v-if="issueLabels.length">
+          <LabelItem
+            v-for="(issueLabel, index) in issueLabels"
+            :key="`issueLabel_${index}`"
+            :class="$style.labelItem"
+            v-bind="{
+              name: issueLabel.name,
+              backgroundColor: issueLabel.color,
+              isLightColor: issueLabel.default,
+              url: issueLabel.url,
+            }"
+          />
+        </template>
+
       </div>
       <div :class="$style.cell2__cell2">
         <span :class="['textSmall', $style.openedBy]">
@@ -24,7 +57,11 @@
       <a
         v-if="commentsQuantity > 0"
         :href="issue.comments_url"
-        :class="$style.comments">
+        :class="['textSmall', 'link_expressionless', $style.comments]">
+        <FontAwesomeSvg
+          :class="$style.commentsSvg"
+          :svg="faCommentAlt"
+        />
         {{commentsQuantity}}
       </a>
     </div>
@@ -33,7 +70,19 @@
 
 <script>
 import Vue from 'vue'
+import LabelItem from '~/components/_componentsLib/LabelItem'
+import FontAwesomeSvg from '~/components/_componentsLib/FontAwesomeSvg'
+import {
+  faExclamationCircle,
+} from '@fortawesome/free-solid-svg-icons'
+import {
+  faCommentAlt,
+} from '@fortawesome/free-regular-svg-icons'
 export default Vue.extend({
+  components: {
+    LabelItem,
+    FontAwesomeSvg
+  },
   props: {
     issue: {
       type: Object,
@@ -46,7 +95,14 @@ export default Vue.extend({
     },
     issueUser() {
       return this.issue.user
+    },
+    issueLabels() {
+      return this.issue.labels
     }
+  },
+  beforeCreate() {
+    this.faExclamationCircle = faExclamationCircle
+    this.faCommentAlt = faCommentAlt
   },
   mounted() {
     console.log('this.issue,', this.issue)
@@ -65,25 +121,40 @@ export default Vue.extend({
 .cell1,
 .cell2,
 .cell3 {
+  display flex
   padding-top var(--indent_1)
   padding-bottom var(--indent_1)
 }
 .cell1 {
   flex-shrink 0
   padding-left var(--indent_2)
+
+}
+.stateIndicatorSvg {
+  width var(--iconSize_1)
+}
+.stateIndicatorSvg_open {
+  color var(--colorIconSuccess)
 }
 .cell2 {
-  display flex
   flex-direction column
   width 100%
   padding-left var(--indent_1)
   padding-right var(--indent_1)
 }
 .cell2__cell1 {
+  display flex
+  flex-wrap wrap
+  align-items center
+}
+.issueTitle {
 
 }
+.labelItem {
+  margin var(--indent_5) 0 var(--indent_5) var(--indent_1)
+}
 .cell2__cell2 {
-
+  margin-top var(--indent_2)
 }
 .openedBy {
 
@@ -91,5 +162,13 @@ export default Vue.extend({
 .cell3 {
   flex-shrink 0
   padding-right var(--indent_2)
+}
+.comments {
+  display flex
+  align-items center
+}
+.commentsSvg {
+  width var(--iconSize_2)
+  margin-right var(--indent_1)
 }
 </style>

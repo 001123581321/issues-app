@@ -1,20 +1,23 @@
 <template>
-  <div :class="$style.homePage">
-
+  <div :class="$style.issuesPage">
+    <IssueList/>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  created() {
-    this.$router.push('/issues')
+  middleware: ['getIssues'],
+  mounted() {
+    if(!this.$isServer) {
+      console.log('this', this)
+    }
   }
 })
 </script>
 
 <style lang="stylus" module>
-.homePage {
+.issuesPage {
   display flex
   flex-direction column
   padding var(--indent_4)

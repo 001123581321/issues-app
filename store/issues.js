@@ -1,3 +1,4 @@
+const vuejsIssuesRoute = '/repos/vuejs/vue/issues'
 
 export const state = () => ({
   issues: [],
@@ -13,7 +14,7 @@ export const actions = {
   async getIssuesFromGithub({ commit }, params) {
     delete params.type
 
-    const response = await this.app.context.$octokit.request('GET /repos/vuejs/vue/issues', params)
+    const response = await this.app.context.$octokit.request(`GET ${vuejsIssuesRoute}`, params)
 
     // console.log('response:', response)
 
@@ -24,5 +25,21 @@ export const actions = {
     }
 
     commit('setIssues', responseData)
+  },
+
+  async getIssueFromGithub({ commit }, params) {
+    const issueNumber = params.number
+    delete params.type
+    delete params.number
+
+    const response = await this.app.context.$octokit.request(`GET ${vuejsIssuesRoute}/${issueNumber}/comments`, params)
+
+    const responseData = response.data
+
+    if(!responseData) {
+      return []
+    }
+
+    return responseData
   },
 }
