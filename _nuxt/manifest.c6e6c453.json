@@ -1,0 +1,10 @@
+{
+  "name": "issues-app",
+  "short_name": "issues-app",
+  "description": "``GITHUB_PERSONAL_ACCESS_TOKEN=add_you_github_personal_access_token_to_.env_file``",
+  "icons": [],
+  "start_url": "/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "lang": "en"
+}
