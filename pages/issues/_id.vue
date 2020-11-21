@@ -25,10 +25,20 @@
     },
     async fetch() {
       const routeParams = this.$route.params
-      this.comments.push(
-        routeParams.issue,
-        ...await this.$store.dispatch({
+      let issueInitComment = routeParams.issue
+      if (!issueInitComment) {
+        issueInitComment = await this.$store.dispatch({
           type: 'issues/getIssueFromGithub',
+          number: routeParams.id
+        })
+      }
+      if(!issueInitComment) {
+        return
+      }
+      this.comments.push(
+        issueInitComment,
+        ...await this.$store.dispatch({
+          type: 'issues/getIssueCommentsFromGithub',
           number: routeParams.id
         })
       )

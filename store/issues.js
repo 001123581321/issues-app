@@ -32,6 +32,16 @@ export const actions = {
     delete params.type
     delete params.number
 
+    const response = await this.app.context.$octokit.request(`GET ${vuejsIssuesRoute}/${issueNumber}`, params)
+
+    return response.data
+  },
+
+  async getIssueCommentsFromGithub({ commit }, params) {
+    const issueNumber = params.number
+    delete params.type
+    delete params.number
+
     const response = await this.app.context.$octokit.request(`GET ${vuejsIssuesRoute}/${issueNumber}/comments`, params)
 
     const responseData = response.data

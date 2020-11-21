@@ -132,6 +132,8 @@ export default Vue.extend({
 }
 .stateIndicatorSvg {
   width var(--iconSize_1)
+  height var(--iconSize_1)
+  margin-top 3px
 }
 .stateIndicatorSvg_open {
   color var(--colorIconSuccess)
