@@ -1,4 +1,13 @@
 module.exports = {
+
+  'testPathIgnorePatterns' : [
+    '<rootDir>/cypress'
+  ],
+
+  modulePathIgnorePatterns: [
+    '<rootDir>/cypress'
+  ],
+
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
