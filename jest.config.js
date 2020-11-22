@@ -1,13 +1,12 @@
 module.exports = {
-
   'testPathIgnorePatterns' : [
-    '<rootDir>/cypress'
+    '<rootDir>/cypress',
+    '<rootDir>/.dump'
   ],
-
   modulePathIgnorePatterns: [
-    '<rootDir>/cypress'
+    '<rootDir>/cypress',
+    '<rootDir>/.dump'
   ],
-
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
@@ -28,5 +27,10 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue'
-  ]
+  ],
+  globals: {
+    'vue-jest': {
+      experimentalCSSCompile: true,
+    }
+  }
 }

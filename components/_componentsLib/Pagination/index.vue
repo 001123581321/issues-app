@@ -12,6 +12,8 @@
         :class="[
           'textSmall',
           $style.link,
+          $style.linkStep,
+          $style.linkPrevStep,
           !prevPageLink && $style.link_disabled
         ]"
       >
@@ -22,8 +24,9 @@
         :key="`link_${index}`"
         :class="[
           'textSmall',
-        ' link_expressionless',
+          'link_expressionless',
           $style.link,
+          $style.linkPageNumber,
           ...index === activeLinkIndex && ['lightText', $style.link_active],
         ]"
         :to="link"
@@ -41,6 +44,8 @@
         :class="[
           'textSmall',
           $style.link,
+          $style.linkStep,
+          $style.linkNextStep,
           !nextPageLink && $style.link_disabled
         ]"
       >
@@ -93,15 +98,19 @@
     width 100%
   }
 
+  .link,
+  .linkPageNumber,
+  .linkStep {
+    display flex
+  }
+
   .link {
-    padding var(--indent_1) var(--indent_2)
+    padding 9px var(--indent_2)
     border-radius var(--borderRadius_1)
     margin-top var(--indent_1)
-
     & + .link {
       margin-left var(--indent_1)
     }
-
     &:not(.link_active):not(.link_disabled):hover {
       box-shadow 0 0 0 1px var(--colorBorder_1)
     }
@@ -115,4 +124,5 @@
   .link_disabled {
     cursor default
   }
+
 </style>
