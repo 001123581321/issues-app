@@ -58,6 +58,20 @@ export const actions = {
 
     const response = await this.app.context.$octokit.request(`GET ${vuejsIssuesRoute}/${issueNumber}/comments`, params)
 
+    /*TODO: if sometime use Github graphGL API*/
+    // const response = await this.app.context.$octokit.graphql(
+    //   `query ($login: String!) {
+    //   organization(login: $login) {
+    //     repositories(privacy: PRIVATE) {
+    //       totalCount
+    //     }
+    //   }
+    // }`,
+    //   {
+    //     login: 'octokit'
+    //   }
+    // )
+
     const responseData = response.data
 
     if (!responseData) {

@@ -13,17 +13,4 @@ export default async function ({store, route, redirect}) {
     page: currentPage,
     per_page: 10,
   })
-
-  // const response = await octokit.graphql(
-  //   `query ($login: String!) {
-  //   organization(login: $login) {
-  //     repositories(privacy: PRIVATE) {
-  //       totalCount
-  //     }
-  //   }
-  // }`,
-  //   {
-  //     login: 'octokit'
-  //   }
-  // )
 }

@@ -105,7 +105,6 @@
     &:not(.link_active):not(.link_disabled):hover {
       box-shadow 0 0 0 1px var(--colorBorder_1)
     }
-
   }
 
   .link_active {
