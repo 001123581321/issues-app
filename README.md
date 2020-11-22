@@ -1,5 +1,7 @@
 # issues-app
 
+![Alt text](assets/screenshot_1.png?raw=true "Screenshot")
+
 ``GITHUB_PERSONAL_ACCESS_TOKEN=add_you_github_personal_access_token_to_.env_file``
 
 ## Build Setup
