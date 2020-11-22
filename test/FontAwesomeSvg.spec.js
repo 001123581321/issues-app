@@ -1,6 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
 import FontAwesomeSvg from '@/components/_componentsLib/FontAwesomeSvg'
-const labelName = 'Test label'
 const factory = () => {
   return shallowMount(FontAwesomeSvg, {
     propsData: {
@@ -22,9 +21,4 @@ describe('FontAwesomeSvg', () => {
     const wrapper = factory()
     expect(wrapper.vm).toBeTruthy()
   })
-
-  // test('renders the label name', () => {
-  //   const wrapper = factory()
-  //   expect(wrapper.html()).toContain(labelName)
-  // })
 })

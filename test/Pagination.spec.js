@@ -32,5 +32,10 @@ describe('First test', () => {
     expect(wrapper.findAll('.linkPageNumber').length).toEqual(linksQuantity)
 
     expect(wrapper.findAll('.linkStep').length).toEqual(2)
+
+    expect(wrapper.findAll('.linkStep').length).toEqual(2)
+
+    expect(wrapper.find('.link:nth-child(2)').html()).toContain('1')
+
   })
 })
