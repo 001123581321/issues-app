@@ -10,6 +10,7 @@
           }
         }"
         :class="[
+          'textSmall',
           $style.link,
           !prevPageLink && $style.link_disabled
         ]"
@@ -20,10 +21,11 @@
         v-for="(link, index) in links"
         :key="`link_${index}`"
         :class="[
-        'link_expressionless',
-        $style.link,
-        ...index === activeLinkIndex && ['lightText', $style.link_active],
-      ]"
+          'textSmall',
+        ' link_expressionless',
+          $style.link,
+          ...index === activeLinkIndex && ['lightText', $style.link_active],
+        ]"
         :to="link"
       >
         {{index + 1}}
@@ -37,6 +39,7 @@
           }
         }"
         :class="[
+          'textSmall',
           $style.link,
           !nextPageLink && $style.link_disabled
         ]"
@@ -85,18 +88,18 @@
     align-items center
     justify-content center
     flex-wrap wrap
-    margin-top calc(var(--indent_2) * -1)
-    margin-left calc(var(--indent_2) * -1)
+    margin-top calc(var(--indent_1) * -1)
+    margin-left calc(var(--indent_1) * -1)
     width 100%
   }
 
   .link {
     padding var(--indent_1) var(--indent_2)
     border-radius var(--borderRadius_1)
-    margin-top var(--indent_2)
+    margin-top var(--indent_1)
 
     & + .link {
-      margin-left var(--indent_2)
+      margin-left var(--indent_1)
     }
 
     &:not(.link_active):not(.link_disabled):hover {

@@ -5,9 +5,7 @@
       :class="$style.pagination"
       v-bind="{
         links: paginationLinks,
-        ...activePaginationLinkIndex && {
-          activeLinkIndex: activePaginationLinkIndex
-        }
+        activeLinkIndex: activePaginationLinkIndex
       }"
     />
   </div>
@@ -55,11 +53,10 @@
           return
         }
         let currentPageNumber = parseInt(nextPageNumber, 10) - 1
-        console.log('nextPageNumber:', currentPageNumber)
         if(currentPageNumber < 1) {
           currentPageNumber = 1
         }
-        return currentPageNumber
+        return currentPageNumber - 1
       },
     },
 

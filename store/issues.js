@@ -58,7 +58,6 @@ export const actions = {
 
     const response = await this.app.context.$octokit.request(`GET ${vuejsIssuesRoute}/${issueNumber}/comments`, params)
 
-
     const responseData = response.data
 
     if (!responseData) {
