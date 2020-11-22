@@ -10,6 +10,10 @@
     --colorBgTertiary #f6f8fa
     --colorIconSuccess #22863a
     --color_1 #fff
+    --color_2 #fe6cbd
+    --color_3 #c6c7f6
+
+    --gradient_1 linear-gradient(45deg, var(--color_2), var(--color_3) 90%)
 
     --indent_1 5px
     --indent_2 10px

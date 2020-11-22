@@ -103,9 +103,6 @@ export default Vue.extend({
   beforeCreate() {
     this.faExclamationCircle = faExclamationCircle
     this.faCommentAlt = faCommentAlt
-  },
-  mounted() {
-    console.log('this.issue,', this.issue)
   }
 })
 </script>

@@ -19,4 +19,13 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### Integration tests
+```bash
+$ ./node_modules/.bin/cypress open
+```
+and run tests from UI
+
+### Unit tests
+```bash
+$ yarn test
+```
